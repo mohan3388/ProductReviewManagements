@@ -81,7 +81,16 @@ namespace ProductReview
                 Console.WriteLine("\n");
                 Console.WriteLine($"{row["ProductId"]}\t|{row["UserId"]}\t|{row["Review"]}\t|{row["Rating"]}\t|{row["Islike"]}");
             }
-
+            string productsList = "";
+            var res = from product in dt.AsEnumerable() where product.Field<bool>("IsLike") == true select product;
+            foreach (var product in res)
+            {
+                Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", product["ProductId"], product["UserId"], product["Rating"], product["Review"], product["IsLike"]);
+                productsList += product["UserId"] + " ";
+            }
+            Console.WriteLine(productsList);
         }
+
+           
     }
 }
