@@ -5,8 +5,9 @@
         public static void Main(string[] args)
         {
             Console.WriteLine("Welcome to product review");
+            Operation operation = new Operation();
             List<ProductModel> products = new List<ProductModel>();
-            products.Add(new ProductModel() { ProductId=1, UserId=1, Rating=3, IsLike=true, Review="Good" });
+            products.Add(new ProductModel() { ProductId = 1, UserId = 1, Rating = 3, IsLike = true, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 2, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 3, UserId = 2, Rating = 2, IsLike = false, Review = "Bad" });
             products.Add(new ProductModel() { ProductId = 4, UserId = 5, Rating = 5, IsLike = true, Review = "Good" });
@@ -14,7 +15,7 @@
             products.Add(new ProductModel() { ProductId = 6, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 7, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 8, UserId = 3, Rating = 5, IsLike = true, Review = "Bad" });
-            products.Add(new ProductModel() { ProductId = 9, UserId =4, Rating = 3, IsLike = false, Review = "Bad" });
+            products.Add(new ProductModel() { ProductId = 9, UserId = 4, Rating = 3, IsLike = false, Review = "Bad" });
             products.Add(new ProductModel() { ProductId = 10, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 11, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 12, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
@@ -31,10 +32,7 @@
             products.Add(new ProductModel() { ProductId = 23, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 24, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 25, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
-            foreach (ProductModel product in products)
-            {
-                Console.WriteLine("ProductId: " + product.ProductId+ " UserId: " + product.UserId+ " Rating: " + product.Rating+ " IsLike: " + product.IsLike+ " Review: " + product.Review);
-            }
+            operation.GetTop3Records(products);
         }
     }
 }
