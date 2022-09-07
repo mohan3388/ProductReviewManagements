@@ -36,7 +36,7 @@
             bool end = true;
             while (end)
             {
-                Console.WriteLine("\n1.Create Product Review\n2.Retrive Top Three Records \n3.Retrive Top Record With Product Id \n4.get top records\n5.get top five records \n6.create data table\n7.Like retrieve data\n8.Retrieve Average Rating\n9.Retrieve All Nice Reviews\n10.");
+                Console.WriteLine("\n1.Create Product Review\n2.Retrive Top Three Records \n3.Retrive Top Record With Product Id \n4.get top records\n5.get top five records \n6.create data table\n7.Like retrieve data\n8.Retrieve Average Rating\n9.Retrieve All Nice Reviews\n10.Retrieve User Id");
                 Console.WriteLine("\nEnter above Option");
                 int option = Convert.ToInt16(Console.ReadLine());
 
@@ -68,6 +68,9 @@
                         break;
                     case 9:
                         operation.RetrieveAllNiceReviews();
+                        break;
+                    case 10:
+                        operation.RetrieveAllProductReviews_ByUserIDAndOrderByRating();
                         break;
                     default:
                         Console.WriteLine("Enter above option");

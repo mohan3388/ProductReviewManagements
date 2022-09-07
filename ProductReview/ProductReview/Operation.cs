@@ -125,6 +125,17 @@ namespace ProductReview
             }
             return productsList;
         }
-      
+        public string RetrieveAllProductReviews_ByUserIDAndOrderByRating()
+        {
+            Datatables();
+            string productsList = "";
+            var res = (from product in productdt.AsEnumerable() where product.Field<Int32>("UserId") == 10 orderby product.Field<int>("Rating") select product).ToList();
+            foreach (var products in res)
+            {
+                Console.WriteLine("{0} ; {1} ; {2} ; {3} ; {4} ", products["ProductId"], products["UserId"], products["Rating"], products["Review"], products["IsLike"]);
+                productsList += products["Rating"] + " ";
+            }
+            return productsList;
+        }
     }
 }
