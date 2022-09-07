@@ -111,6 +111,20 @@ namespace ProductReview
                 }
                 return result;
             }
-        
+        public string RetrieveAllNiceReviews()
+        {
+            Datatables();
+            List<ProductModel> ProductReviewsList = new List<ProductModel>();
+
+            string productsList = "";
+            var res = from product in productdt.AsEnumerable() where product.Field<string>("Review") == "nice" select product;
+            foreach (var products in res)
+            {
+                Console.WriteLine("{0} ; {1} ; {2} ; {3} ; {4} ", products["ProductId"], products["UserId"], products["Rating"], products["Review"], products["IsLike"]);
+                productsList += products["UserId"] + " ";
+            }
+            return productsList;
+        }
+      
     }
 }
