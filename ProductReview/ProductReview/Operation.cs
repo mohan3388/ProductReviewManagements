@@ -9,6 +9,7 @@ namespace ProductReview
 {
     public class Operation
     {
+        DataTable productdt = new DataTable();
         public void GetTop3Records(List<ProductModel> reviewlist)
         {
             var result = reviewlist.OrderByDescending(x => x.Rating).Take(3).ToList();
@@ -81,16 +82,35 @@ namespace ProductReview
                 Console.WriteLine("\n");
                 Console.WriteLine($"{row["ProductId"]}\t|{row["UserId"]}\t|{row["Review"]}\t|{row["Rating"]}\t|{row["Islike"]}");
             }
+
+        }
+
+        public string RetrievedetailsWithLikes()
+        {
+            List<ProductModel> ProductReviewsList = new List<ProductModel>();
+            Datatables();
             string productsList = "";
-            var res = from product in dt.AsEnumerable() where product.Field<bool>("IsLike") == true select product;
+            var res = from product in productdt.AsEnumerable() where product.Field<bool>("IsLike") == true select product;
             foreach (var product in res)
             {
                 Console.WriteLine("{0} | {1} | {2} | {3} | {4} ", product["ProductId"], product["UserId"], product["Rating"], product["Review"], product["IsLike"]);
                 productsList += product["UserId"] + " ";
             }
-            Console.WriteLine(productsList);
+            return productsList;
         }
 
-           
+            public string RetrieveAverageRating()
+            {
+                string result = "";
+            Datatables();
+                var res = from product in productdt.AsEnumerable() group product by product.Field<int>("ProductId") into temp select new { productid = temp.Key, Average = Math.Round(temp.Average(x => x.Field<int>("Rating")), 1) };
+                foreach (var product in res)
+                {
+                    Console.WriteLine("Product id: {0} Average Rating: {1}", product.productid, product.Average);
+                    result += product.Average + " ";
+                }
+                return result;
+            }
+        
     }
 }
