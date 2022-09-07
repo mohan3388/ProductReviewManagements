@@ -25,12 +25,12 @@
             products.Add(new ProductModel() { ProductId = 16, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 17, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 18, UserId = 7, Rating = 1, IsLike = false, Review = "Bad" });
-            products.Add(new ProductModel() { ProductId = 19, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
+            products.Add(new ProductModel() { ProductId = 1, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 20, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 21, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
-            products.Add(new ProductModel() { ProductId = 22, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
+            products.Add(new ProductModel() { ProductId = 1, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 23, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
-            products.Add(new ProductModel() { ProductId = 24, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
+            products.Add(new ProductModel() { ProductId = 2, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
             products.Add(new ProductModel() { ProductId = 25, UserId = 2, Rating = 4, IsLike = false, Review = "Good" });
 
             bool end = true;
@@ -50,6 +50,9 @@
                         break;
                     case 3:
                         operation.GetTopRecordsWithProductId(products);
+                        break;
+                    case 4:
+                        operation.GetTopRecordsCountWithProductId(products);
                         break;
                     default:
                         Console.WriteLine("Enter above option");
