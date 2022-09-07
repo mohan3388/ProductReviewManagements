@@ -21,5 +21,10 @@ namespace ProductReview
                 Console.WriteLine("ProductId: " + product.ProductId + " UserId: " + product.UserId + " Rating: " + product.Rating + " IsLike: " + product.IsLike + " Review: " + product.Review);
             }
         }
+        public void GetTopRecordsWithProductId(List<ProductModel> list)
+        {
+            var result = list.Where(x => x.Rating > 3 && (x.ProductId == 1 || x.ProductId == 4 || x.ProductId == 9)).Take(3).ToList();
+            Display(result);
+        }
     }
 }
